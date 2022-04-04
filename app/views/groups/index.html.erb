@@ -1,1 +1,31 @@
-<h1>Groups</h1>
+<h1 class="text-center">Groups</h1>
+
+<table class="table table-bordered ">
+  <thead>
+   <tr>
+     <th scope="col">Group</th>
+     <th scope="col">Full Name</th>
+     <th scope="col">Role</th>
+     <th scope="col">Edit</th>
+     <th scope="col">Delete</th>
+   </tr>
+ </thead>
+ <tbody>
+   <% @groups.each do |group| %>
+     <% organizer = group.roles.Organizer %>
+   <tr>
+     <td><%= link_to group.name, group_path(group.id) %></td>
+     <% organizer = group.roles.Organizer %>
+     <% if organizer %>
+      <% organizer.each do |role| %>
+        <td><%= role.user.last_name %> <%= role.user.first_name %></td>
+        <td><%= role.role %></td>
+      <% end %>
+     <% end %>
+     <td><%= link_to 'Edit', edit_group_path(group) %></td>
+     <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+  </tbody>
+
+</table>

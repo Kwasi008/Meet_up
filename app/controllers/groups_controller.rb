@@ -4,5 +4,4 @@ class GroupsController < ApplicationController
     @groups = Group.all
   end
 
-
 end
