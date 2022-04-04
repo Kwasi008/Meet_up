@@ -4,14 +4,11 @@ class Role < ApplicationRecord
   validates :role, presence: true
   after_initialize :set_defaults
 
-  enum role: [:Organizer, :Presenter, :Participant]
+  enum role: %i[Organizer Presenter Participant]
 
   private
 
   def set_defaults
-    if self.new_record?
-      self.role ||= :Participant
-    end
+    self.role ||= :Participant if new_record?
   end
-
 end

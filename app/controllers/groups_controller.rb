@@ -44,7 +44,7 @@ class GroupsController < ApplicationController
 
   def import
     Group.import(params[:file])
-    redirect_to root_url, notice: "Group data imported!"
+    redirect_to root_url, notice: 'Group data imported!'
   end
 
   private

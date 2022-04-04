@@ -1,4 +1,6 @@
+<div class="pt-3 pb-3">
 <h1 class="text-center"><%=@group.name%></h1>
+</div>
 
 <table class="table table-bordered">
   <thead>
@@ -10,10 +12,12 @@
   <tbody>
     <% @group.users.each do |user| %>
       <tr>
-        <td><%= user.first_name %> <%= user.last_name %></td>
+        <td><%= user.full_name %></td>
         <td><%= user.roles.where(group_id: @group.id, user_id: user.id)[0]["role"] %></td>
       </tr>
     <% end %>
 </table>
 
-<%= link_to 'Back', groups_path %>
+<div class="pt-3 pb-3 r-3">
+<%= link_to 'Back', groups_path, :class => "btn btn-warning " %>
+</div>
