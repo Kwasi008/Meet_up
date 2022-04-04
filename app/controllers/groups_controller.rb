@@ -42,6 +42,11 @@ class GroupsController < ApplicationController
     end
   end
 
+  def import
+    Group.import(params[:file])
+    redirect_to root_url, notice: "Group data imported!"
+  end
+
   private
 
   def set_group
