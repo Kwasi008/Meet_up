@@ -44,8 +44,13 @@ class GroupsController < ApplicationController
   end
 
   def import
-    Group.import(params[:file])
-    redirect_to root_url, notice: 'Group data imported!'
+    @group_import = Group.import(params[:file])
+    if @group_import.save?
+      flash.notice = "Import was successful"
+    else
+      flash.alert = "#{@group_import.errors.full_messages}"
+    end
+    redirect_to root_url
   end
 
   private
