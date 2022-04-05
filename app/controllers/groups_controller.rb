@@ -13,22 +13,23 @@ class GroupsController < ApplicationController
     @group = Group.new(group_params)
     if @group.save
       redirect_to @group
-      flash[:notice] = 'Group was successfully created.'
+      flash.notice = 'Group was successfully created.'
     else
       redirect_to new_group_path
-      flash[:alert] = @group.errors.full_messages.to_s
+      flash.alert = @group.errors.full_messages.to_s
     end
   end
 
-  def edit; end
+  def edit
+  end
 
   def update
     if @group.update(group_params)
       redirect_to @group
-      flash[:notice] = 'Group was successfully updated.'
+      flash.notice = 'Group was successfully updated.'
     else
       redirect_to edit_group_path
-      flash[:alert] = @group.errors.full_messages.to_s
+      flash.alert = @group.errors.full_messages.to_s
     end
   end
 
@@ -50,7 +51,12 @@ class GroupsController < ApplicationController
   private
 
   def set_group
-    @group = Group.find(params[:id])
+    begin
+      @group = Group.find(params[:id])
+    rescue Exception => e
+      redirect_to groups_path
+      flash.alert = "#{e}"
+    end
   end
 
   def group_params
