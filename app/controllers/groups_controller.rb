@@ -38,7 +38,7 @@ class GroupsController < ApplicationController
       flash.notice = 'Group has been deleted '
     else
       redirect_to groups_path
-      flash.alert = @vehicle.errors.full_messages.to_sentence
+      flash.alert = @group.errors.full_messages.to_sentence
     end
   end
 
@@ -49,7 +49,7 @@ class GroupsController < ApplicationController
     rescue
      redirect_to root_url, notice: "Invalid CSV file format."
     end
-    
+
   end
 
   private
