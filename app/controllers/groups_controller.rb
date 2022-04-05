@@ -20,8 +20,7 @@ class GroupsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @group.update(group_params)
@@ -44,24 +43,17 @@ class GroupsController < ApplicationController
   end
 
   def import
-    @group_import = Group.import(params[:file])
-    if @group_import.save?
-      flash.notice = "Import was successful"
-    else
-      flash.alert = "#{@group_import.errors.full_messages}"
-    end
-    redirect_to root_url
+    Group.import(params[:file])
+    redirect_to root_url, notice: "Group data imported!"
   end
 
   private
 
   def set_group
-    begin
-      @group = Group.find(params[:id])
-    rescue Exception => e
-      redirect_to groups_path
-      flash.alert = "#{e}"
-    end
+    @group = Group.find(params[:id])
+  rescue Exception => e
+    redirect_to groups_path
+    flash.alert = e.to_s
   end
 
   def group_params

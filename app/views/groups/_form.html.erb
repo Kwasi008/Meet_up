@@ -1,7 +1,7 @@
 <%= form_for(group) do |f| %>
   <% if group.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(group.errors.count, "error") %> prohibited this group from being saved:</h2>
+      <h2><%= pluralize(group.errors.count, "error") %> does not allow this group to be saved </h2>
 
       <ul>
       <% group.errors.full_messages.each do |message| %>
@@ -10,13 +10,15 @@
       </ul>
     </div>
   <% end %>
+  <div class=" d-flex justify-content-center">
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
+    <div class="field">
+      <%= f.label :name, "Group Name", class: "pt-2 mb-3 mx-3" %>
+      <%= f.text_field :name %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit %>
+    <div class="actions">
+      <%= f.submit "Save Group", class: "btn btn-success pt-2 mb-3 mx-3" %>
+    </div>
   </div>
 <% end %>
