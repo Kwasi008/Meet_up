@@ -2,7 +2,8 @@ class GroupsController < ApplicationController
   before_action :set_group, only: %i[show edit update destroy]
 
   def index
-    @groups = Group.all
+    # @groups = Group.all
+    @groups = Group.paginate(page: params[:page], per_page: 10)
   end
 
   def new

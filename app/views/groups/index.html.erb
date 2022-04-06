@@ -18,9 +18,9 @@
 <div class="container-fluid">
   <div class="row">
      <div class="col-xs-12" >
-        <table class="table table-bordered ">
-          <thead>
-           <tr>
+        <table class="table table-bordered  ">
+          <thead >
+           <tr >
              <th scope="col">Group</th>
              <th scope="col">Full Name</th>
              <th scope="col">Role</th>
@@ -30,7 +30,6 @@
          </thead>
          <tbody>
            <% @groups.each do |group| %>
-             <% organizer = group.roles.Organizer %>
            <tr>
              <td><%= link_to group.name, group_path(group.id) %></td>
              <% organizer = group.roles.Organizer %>
@@ -39,7 +38,6 @@
                 <td><%= role.user.full_name%> </td>
                 <td><%= role.role %></td>
               <% end %>
-            <% else %>
              <% end %>
 
              <td><%= link_to 'Edit', edit_group_path(group) %></td>
@@ -48,6 +46,16 @@
           <% end %>
           </tbody>
         </table>
+
+        <div class="d-flex align-items-end flex-column mt-auto p-2">
+          <div class="digg_pagination pt-1 pb-1 mx-3 ">
+            <div class="page_info pt-2 pb-2 ">
+              <%= page_entries_info @groups %>
+            </div>
+            <%= will_paginate @pgroups, :container => false %>
+          </div>
+        </div>
+
     </div>
   </div>
 </div>

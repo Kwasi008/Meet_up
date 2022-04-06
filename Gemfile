@@ -18,6 +18,7 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'bootstrap', '~> 5.1.3'
 gem 'jquery-rails'
+gem 'will_paginate', '~> 3.3'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
