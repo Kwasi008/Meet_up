@@ -1,0 +1,48 @@
+<div class="pt-3 pb-3">
+  <h1 class="text-center">Import information</h1>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="d-flex justify-content-end pt-3, pt-3 ">
+    <%= form_tag import_groups_path, multipart: true do %>
+      <%= file_field_tag :file %>
+      <%= submit_tag "Import CSV" %>
+    <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid pt-3 pb-3">
+  <div class="row">
+     <div class="col-xs-12" >
+       <table class="table table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Row headers</th>
+            <th scope="col">Row Discription</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">First Name</th>
+            <td>Users first Name</td>
+          </tr>
+          <tr>
+            <th scope="row">Last Name</th>
+            <td>Users last name</td>
+          </tr>
+          <tr>
+            <th scope="row">Group Name</th>
+            <td>Group Namey</td>
+          </tr>
+          <tr>
+            <th scope="row">Role in group</th>
+            <td>Role with in the group (Organizer, Participant, Presenter)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -42,6 +42,9 @@ class GroupsController < ApplicationController
     end
   end
 
+  def import_page
+  end
+
   def import
     begin
       Group.import(params[:file])
@@ -49,7 +52,6 @@ class GroupsController < ApplicationController
     rescue
      redirect_to root_url, notice: "Invalid CSV file format."
     end
-
   end
 
   private
